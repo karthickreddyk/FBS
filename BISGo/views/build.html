@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Builder Suite</title>
+    <meta charset="utf-8" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/controllers/buildservice.js"></script>
+    <link href="../styles/form-builder.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="../scripts/plugins/ngDraggable.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="buildController" class="dvmain">
+        
+        <div class="control-panel">
+            <div class="form-cover-break">{{ctrlTitle}}</div>
+            <ul id="draggable_ctrl">
+                <li ng-drag="true" ng-if="myCtrl.allowClone !== false" ng-repeat="myCtrl in myControls | orderBy : 'id'  track by myCtrl.id" uniqueIdentity="{{myCtrl.id}}">
+                    <div ng-drag="true" ng-drag-data="myCtrl" id="{{myCtrl.title}}">{{myCtrl.description}}</div>
+                </li>
+            </ul>
+            <ul id="draggable_temp">
+                <li ng-drag="true" ng-if="myCtrl.allowClone !== false" ng-repeat="myCtrl in myTemplates | orderBy : 'id'  track by myCtrl.id" uniqueIdentity="{{myCtrl.id}}">
+                    <div ng-drag="true" ng-drag-data="myCtrl" id="{{myCtrl.title}}">{{myCtrl.description}}</div>
+                </li>
+            </ul>
+        </div>
+        <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" class="build-panel">
+            <div class="form-cover-break">{{formTitle}}</div>
+            <ul class="frmb" id="ulDrop"></ul>
+        </div>
+    </div>
+</body>
+</html>

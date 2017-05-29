@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Builder Suite</title>
+    <meta charset="utf-8" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/controllers/buildswitch.js"></script>
+    <link href="../styles/form-builder.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="../scripts/plugins/ngDraggable.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="buildController" class="dvmain">
+
+        <div class="control-panel">
+            <div class="form-cover-break">{{ctrlTitle}}</div>
+            <ul id="draggable_temp">
+                <li ng-drag="true" ng-if="myCtrl.allowClone !== false" ng-repeat="myCtrl in myTemplates | orderBy : 'id'  track by myCtrl.id" uniqueIdentity="{{myCtrl.id}}">
+                    <div ng-drag="true" ng-drag-data="myCtrl" id="{{myCtrl.title}}">{{myCtrl.description}}</div>
+                </li>
+            </ul>
+            <ul id="draggable_ctrl">
+                <li ng-drag="true" ng-if="myCtrl.allowClone !== false" ng-repeat="myCtrl in myControls | orderBy : 'id'  track by myCtrl.id" uniqueIdentity="{{myCtrl.id}}">
+                    <div ng-drag="true" ng-drag-data="myCtrl" id="{{myCtrl.title}}">{{myCtrl.description}}</div>
+                </li>
+            </ul>
+            
+        </div>
+        <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" class="build-panel">
+            <div class="form-cover-break">{{formTitle}}</div>
+
+            <ul class="frmb" id="ulDrop" ng-switch="enableList">
+
+                <li class="form-field" type="heading" ng-switch-when="heading">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <div class="prev-holder"><div class="form-group"><h1>Heading</h1></div></div>
+                </li>
+
+                <li class="form-field" type="heading" ng-switch-when="name">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <label class="field-label">Name</label><div class="prev-holder">
+                        <div class="fnamedv"><input class="form-control name" required type="text">First Name</div>
+                        <div class="lnamedv"><input class="form-control name" required type="text">Last Name</div>
+                    </div>
+                </li>
+
+                <li class="form-field" type="heading" ng-switch-when="email">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <label class="field-label">Email</label><div class="prev-holder"><div class="emaildv"><input class="form-control" type="email">Email ID</div></div>
+                </li>
+
+                <li class="form-field" type="heading" ng-switch-when="address">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <label class="field-label">Address</label><div class="prev-holder">
+                        <div class="emaildv"><input class="form-control" type="text">Address 1</div>
+                        <div class="emaildv"><input class="form-control" type="text">Address 2</div><div class="fnamedv"><input class="form-control name" type="text">City</div>
+                        <div class="lnamedv"><input class="form-control name" type="text">State / Province</div><div class="fnamedv"><input class="form-control name" type="text">Country</div>
+                        <div class="lnamedv"><input class="form-control name" type="number" ng-minlength="4" ng-maxlength="8">Postal / Zipcode</div>
+                    </div>
+                </li>
+
+                <li class="form-field" type="heading" ng-switch-when="tel">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <label class="field-label">Phone No</label><div class="prev-holder">
+                        <div class="areadv"><span style="float: left;">+</span><input class="form-control" type="text">Area Code</div>
+                        <div class="teldv"><input class="form-control" type="tel">Phone / Mobile</div>
+                    </div>
+                </li>
+
+                <li class="form-field" type="heading" ng-switch-when="date">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <label class="field-label">Date</label><div class="prev-holder"><div class="datedv"><input class="form-control" type="date">Date</div></div>
+                </li>
+
+                <li class="form-field" type="heading" ng-switch-when="time">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <label class="field-label">Date</label><div class="prev-holder"><div class="datedv"><input class="form-control" type="time">Time</div></div>
+                </li>
+
+                <li class="form-field" type="heading" ng-switch-when="submit">
+                    <div class="field-actions">
+                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                    </div>
+                    <div class="prev-holder"><button type="submit">Submit</button></div>
+                </li>
+
+                <li ng-switch-default></li>
+
+
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
