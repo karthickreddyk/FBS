@@ -1,0 +1,8 @@
+﻿------ Build started: Project: Demo, Configuration: Debug Any CPU ------
+Validating Web Site
+Building directory '/scripts/controllers/'.
+Building directory '/scripts/plugins/'.
+Building directory '/scripts/'.
+
+Validation Complete
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========

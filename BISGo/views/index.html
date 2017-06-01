@@ -1,52 +1,157 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles/demo.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.1/jquery.rateyo.min.css">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>jQuery formBuilder/formRender Demo</title>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../styles/swipping.css" rel="stylesheet" />
+    <script src="../scripts/configuration/jquery-1.4.2.min.js"></script>
+    <script src="../scripts/configuration/jquery-ui-1.8.custom.min.js"></script>
 </head>
 <body>
-    <div class="content">
-        <h1>jQuery formBuilder</h1>
-        <div id="stage1" class="build-wrap"></div>
-        <form class="render-wrap"></form>
-        <button id="edit-form">Edit Form</button>
-        <div class="action-buttons">
-            <h2>Actions</h2>
-            <button id="showData" type="button">Show Data</button>
-            <button id="clearFields" type="button">Clear All Fields</button>
-            <button id="getData" type="button">Get Data</button>
-            <button id="setData" type="button">Set Data</button>
-            <button id="addField" type="button">Add Field</button>
-            <button id="removeField" type="button">Remove Field</button>
-            <button id="testSubmit" type="submit">Test Submit</button>
-            <button id="resetDemo" type="button">Reset Demo</button>
-            <h2>i18n</h2>
-            <select id="setLanguage">
-                <option value="ar-TN" dir="rtl">تونسي</option>
-                <option value="de-DE">Deutsch</option>
-                <option value="en-US">English</option>
-                <option value="es-ES">español</option>
-                <option value="fa-IR" dir="rtl">فارسى</option>
-                <option value="fr-FR">français</option>
-                <option value="nb-NO">norsk</option>
-                <option value="nl-NL">Nederlands</option>
-                <option value="pt-BR">português</option>
-                <option value="ro-RO">român</option>
-                <option value="ru-RU">Русский язык</option>
-                <option value="tr-TR">Türkçe</option>
-                <option value="vi-VN">tiếng việt</option>
-                <option value="zh-TW">台語</option>
-            </select>
+
+    <div id="center-wrapper">
+
+
+
+        <div class="dhe-example-section" id="ex-1-1">
+            <div class="dhe-example-section-header">
+            </div>
+            <div class="dhe-example-section-content">
+
+                <!-- BEGIN: XHTML for example 1.1 -->
+
+                <div id="example-1-1">
+
+                    <ul class="sortable-list">
+                        <li class="sortable-item"> item A</li>
+                        <li class="sortable-item"> item B</li>
+                        <li class="sortable-item"> item C</li>
+                    </ul>
+
+                </div>
+
+                <!-- END: XHTML for example 1.1 -->
+
+            </div>
         </div>
+
+        <div class="dhe-example-section" id="ex-1-2">
+            <div class="dhe-example-section-header">
+                <br /><br />
+            </div>
+            <div class="dhe-example-section-content">
+
+                <!-- BEGIN: XHTML for example 1.2 -->
+
+                <div id="example-1-2">
+
+                    <div class="column left first">
+
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> item A</li>
+                            <li class="sortable-item"> item B</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="column left">
+
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> item C</li>
+                            <li class="sortable-item"> item D</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="column left">
+
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> item E</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="clearer">&nbsp;</div>
+
+                </div>
+
+                <!-- END: XHTML for example 1.2 -->
+
+            </div>
+        </div>
+
+        <div class="dhe-example-section" id="ex-1-3">
+            <div class="dhe-example-section-header">
+                <br /><br />
+            </div>
+            <div class="dhe-example-section-content">
+
+                <!-- BEGIN: XHTML for example 1.3 -->
+
+                <div id="example-1-3">
+
+                    <div class="column left first">
+
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> item A</li>
+                            <li class="sortable-item"> item B</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="column left">
+
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> item C</li>
+                            <li class="sortable-item"> item D</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="column left">
+
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> item E</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="clearer">&nbsp;</div>
+
+                </div>
+
+                <!-- END: XHTML for example 1.3 -->
+
+            </div>
+        </div>
+
+
+
+
+
     </div>
-    <script src="../scripts/drag/demo.js"></script>
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/js/form-builder.min.js"></script>
-    <script src="assets/js/form-render.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.1/jquery.rateyo.min.js"></script>
-    <script src="assets/js/demo.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#example-1-1 .sortable-list').sortable();
+
+            $('#example-1-2 .sortable-list').sortable({
+                connectWith: '#example-1-2 .sortable-list'
+            });
+
+            $('#example-1-3 .sortable-list').sortable({
+                connectWith: '#example-1-3 .sortable-list',
+                placeholder: 'placeholder',
+            });
+
+            $('#example-1-4 .sortable-list').sortable({
+                connectWith: '#example-1-4 .sortable-list',
+                containment: '#containment'
+            });
+
+        });
+
+    </script>
 </body>
 </html>
