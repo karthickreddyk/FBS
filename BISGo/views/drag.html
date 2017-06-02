@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../styles/swipping.css" rel="stylesheet" />
+    <script src="../scripts/configuration/jquery-1.4.2.min.js"></script>
+    <script src="../scripts/configuration/jquery-ui-1.8.custom.min.js"></script>
+</head>
+<body>
+
+    <div id="center-wrapper">
+
+        <div class="dhe-example-section" id="ex-1-3">
+            <div class="dhe-example-section-header">
+                <br /><br />
+            </div>
+            <div class="dhe-example-section-content">
+                <div id="dvDrag">
+                    <div class="column left first">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 1</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 2</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 3</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left first">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 4</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 5</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 6</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left first">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 7</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 8</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list">
+                            <li class="sortable-item"> Control 9</li>
+                        </ul>
+                    </div>
+
+                    <div class="column left first">
+                        <ul class="sortable-list"></ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list"></ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list"></ul>
+                    </div>
+
+                    <div class="column left first">
+                        <ul class="sortable-list"></ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list"></ul>
+                    </div>
+
+                    <div class="column left">
+                        <ul class="sortable-list"></ul>
+                    </div>
+
+                    <div class="clearer">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#dvDrag .sortable-list').sortable({
+                connectWith: '#dvDrag .sortable-list',
+                placeholder: 'placeholder',
+            });
+        });
+
+    </script>
+</body>
+</html>
