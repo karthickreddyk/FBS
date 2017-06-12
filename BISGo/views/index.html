@@ -1,157 +1,232 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Form Builder Suite</title>
     <meta charset="utf-8" />
-    <link href="../styles/swipping.css" rel="stylesheet" />
-    <script src="../scripts/configuration/jquery-1.4.2.min.js"></script>
-    <script src="../scripts/configuration/jquery-ui-1.8.custom.min.js"></script>
+    <script src="../scripts/configuration/angular.js"></script>
+    <script src="../scripts/configuration/angular.min.js"></script>
+    <script src="../scripts/controllers/home.js"></script>
+    <link href="../styles/form-builder.css" rel="stylesheet" />
+    <script src="../scripts/plugins/ngDraggable.js"></script>
 </head>
-<body>
+<body ng-app="app">
+    <div ng-controller="homeController" class="dvmain">
+        <div class="control-panel">
+            <div class="form-cover-break">{{ctrlTitle}}</div>
+            <ul id="draggable_ctrl">
+                <li ng-drag="true" ng-if="myCtrl.ConstraintForm !== false" ng-repeat="myCtrl in myControls | orderBy : 'id'  track by myCtrl.id" uniqueIdentity="{{myCtrl.id}}">
+                    <div ng-drag="true" ng-drag-data="myCtrl" id="{{myCtrl.Code}}">{{myCtrl.Name}}</div>
+                </li>
+            </ul>
 
-    <div id="center-wrapper">
-
-
-
-        <div class="dhe-example-section" id="ex-1-1">
-            <div class="dhe-example-section-header">
-            </div>
-            <div class="dhe-example-section-content">
-
-                <!-- BEGIN: XHTML for example 1.1 -->
-
-                <div id="example-1-1">
-
-                    <ul class="sortable-list">
-                        <li class="sortable-item"> item A</li>
-                        <li class="sortable-item"> item B</li>
-                        <li class="sortable-item"> item C</li>
-                    </ul>
-
-                </div>
-
-                <!-- END: XHTML for example 1.1 -->
-
-            </div>
         </div>
+        <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" class="build-panel">
+            <div class="form-cover-break">{{formTitle}}</div>
 
-        <div class="dhe-example-section" id="ex-1-2">
-            <div class="dhe-example-section-header">
-                <br /><br />
-            </div>
-            <div class="dhe-example-section-content">
-
-                <!-- BEGIN: XHTML for example 1.2 -->
-
-                <div id="example-1-2">
-
-                    <div class="column left first">
-
-                        <ul class="sortable-list">
-                            <li class="sortable-item"> item A</li>
-                            <li class="sortable-item"> item B</li>
-                        </ul>
-
+            <ul class="frmb" id="ulDrop">
+                <li class="form-field" type="heading" ng-repeat="list in myList" ng-switch on="list.title">
+                    <div class="maindv" ng-switch-when="String" >
+                        <div class="firstdv">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">String</label><div class="prev-holder">
+                                <div class="string"><input class="form-control name" required type="text"></div>
+                            </div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
                     </div>
-
-                    <div class="column left">
-
-                        <ul class="sortable-list">
-                            <li class="sortable-item"> item C</li>
-                            <li class="sortable-item"> item D</li>
-                        </ul>
-
+                    <div class="maindv" ng-switch-when="Selection">
+                        <div class="dvSelection">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Selection</label>
+                            <div class="prev-holder">
+                                <div class="fnamedv">
+                                    <select name="sometext" size="1">
+                                        <option>Selection 1</option>
+                                        <option>Selection 2</option>
+                                        <option>Selection 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
                     </div>
-
-                    <div class="column left">
-
-                        <ul class="sortable-list">
-                            <li class="sortable-item"> item E</li>
-                        </ul>
-
+                    <div class="maindvMS" ng-switch-when="Multi Selection">
+                        <div class="dvMultiSelection">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Multi Selection</label><div class="prev-holder">
+                                <div class="prev-holder">
+                                    <div class="fnamedv">
+                                        <select name="sometext" size="3" multiple="multiple">
+                                            <option>Selection 1</option>
+                                            <option>Selection 2</option>
+                                            <option>Selection 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
                     </div>
-
-                    <div class="clearer">&nbsp;</div>
-
-                </div>
-
-                <!-- END: XHTML for example 1.2 -->
-
-            </div>
+                    <div class="maindv" ng-switch-when="Date">
+                        <div class="dvDate">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Date</label><div class="prev-holder"><div class="datedv"><input class="form-control" type="date"></div></div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                    </div>
+                    <div class="maindv" ng-switch-when="DateTime">
+                        <div class="dvDate">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Date Time</label><div class="prev-holder">
+                                <div class="fnamedv"><input class="form-control name" required type="datetime"></div>
+                            </div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                    </div>
+                    <div class="maindv" ng-switch-when="Time">
+                        <div class="dvDate">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Time</label><div class="prev-holder"><div class="datedv"><input class="form-control" type="time"></div></div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                    </div>
+                    <div class="maindv" ng-switch-when="Integer">
+                        <div class="dvDate">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Integer</label><div class="prev-holder">
+                                <div class="fnamedv"><input class="form-control name" required type="number"></div>
+                            </div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                    </div>
+                    <div class="maindv" ng-switch-when="Decimal">
+                        <div class="dvDate">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Decimal</label><div class="prev-holder">
+                                <div class="fnamedv"><input class="form-control name" required type="text"></div>
+                            </div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                    </div>
+                    <div class="maindv" ng-switch-when="Section">
+                        <div class="dvDate">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <label class="field-label">Section</label><div class="prev-holder">
+                                <div class="datedv"><section></section></div>
+                            </div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                    </div>
+                    <div class="maindv" ng-switch-when="Submit">
+                        <div class="dvMultiSelection">
+                            <div class="field-actions">
+                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                            </div>
+                            <div class="prev-holder"><button type="submit">Submit</button></div>
+                        </div>
+                        <div class="seconddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                        <div class="thirddv">
+                            <br />
+                            Drop Here...
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-
-        <div class="dhe-example-section" id="ex-1-3">
-            <div class="dhe-example-section-header">
-                <br /><br />
-            </div>
-            <div class="dhe-example-section-content">
-
-                <!-- BEGIN: XHTML for example 1.3 -->
-
-                <div id="example-1-3">
-
-                    <div class="column left first">
-
-                        <ul class="sortable-list">
-                            <li class="sortable-item"> item A</li>
-                            <li class="sortable-item"> item B</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="column left">
-
-                        <ul class="sortable-list">
-                            <li class="sortable-item"> item C</li>
-                            <li class="sortable-item"> item D</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="column left">
-
-                        <ul class="sortable-list">
-                            <li class="sortable-item"> item E</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="clearer">&nbsp;</div>
-
-                </div>
-
-                <!-- END: XHTML for example 1.3 -->
-
-            </div>
-        </div>
-
-
-
-
-
     </div>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $('#example-1-1 .sortable-list').sortable();
-
-            $('#example-1-2 .sortable-list').sortable({
-                connectWith: '#example-1-2 .sortable-list'
-            });
-
-            $('#example-1-3 .sortable-list').sortable({
-                connectWith: '#example-1-3 .sortable-list',
-                placeholder: 'placeholder',
-            });
-
-            $('#example-1-4 .sortable-list').sortable({
-                connectWith: '#example-1-4 .sortable-list',
-                containment: '#containment'
-            });
-
-        });
-
-    </script>
 </body>
 </html>

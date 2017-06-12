@@ -1,323 +1,391 @@
 ﻿body {
-	color: #333;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 14px;
-	line-height: 1.42857;
+    color: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
 }
 
 .dvmain {
-	width: 100%;
-	font-family: Calibri;
+    width: 100%;
+    font-family: Calibri;
 }
 
 /*---------------Left Panel Starts---------------*/
 
 .control-panel {
-	width: 20%;
-	border: thin solid;
-	float: left;
-	min-height: 500px;
-	height: auto;
-	background: silver;
+    width: 20%;
+    border: thin solid;
+    float: left;
+    min-height: 500px;
+    height: auto;
+    background: silver;
 }
 
-	.control-panel ul {
-		float: left;
-		width: 85%;
-		background-color: white;
-		padding: 10px;
-		color: Black;
-		margin: 10px;
-		list-style: none;
-	}
+    .control-panel ul {
+        float: left;
+        width: 85%;
+        background-color: white;
+        padding: 10px;
+        color: Black;
+        margin: 10px;
+        list-style: none;
+    }
 
-		.control-panel ul li {
-			padding: 5px;
-			margin: 5px;
-			background-color: silver;
-			cursor: move;
-			list-style: none;
-		}
+        .control-panel ul li {
+            padding: 5px;
+            margin: 5px;
+            background-color: silver;
+            cursor: move;
+            list-style: none;
+        }
 
 /*---------------Left Panel Ends---------------*/
 /*---------------Right Panel Starts---------------*/
 
 .build-panel {
-	float: left;
-	position: relative;
-	width: 74%;
-	vertical-align: top;
-	border: thin solid;
-	min-height: 1000px;
-	margin-left: 1%;
-	background-color: #C0C0C0;
-	height: auto;
+    float: left;
+    position: relative;
+    width: 74%;
+    vertical-align: top;
+    border: thin solid;
+    min-height: 1000px;
+    margin-left: 1%;
+    background-color: #C0C0C0;
+    height: auto;
 }
 
-	.build-panel.empty:after {
-		content: attr(data-content);
-		position: absolute;
-		text-align: center;
-		top: 50%;
-		left: 0;
-		width: 100%;
-		margin-top: -1em
-	}
+    .build-panel.empty:after {
+        content: attr(data-content);
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        margin-top: -1em;
+    }
 
 .form-cover-break {
-	border-bottom: 2px dashed rgba(0, 0, 0, 0.09);
-	text-align: center;
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.09);
+    text-align: center;
 }
 
-	.form-cover-break::before, .form-page-break::before {
-		margin-left: -50%;
-		right: 10px;
-	}
+    .form-cover-break::before, .form-page-break::before {
+        margin-left: -50%;
+        right: 10px;
+    }
 
 .frmb {
-	width: 98%;
-	list-style-type: none;
-	min-height: 200px;
-	margin: 10px 10px 10px 10px;
-	padding: 0;
-	transition: background-color .5s ease-in-out
+    width: 98%;
+    list-style-type: none;
+    min-height: 200px;
+    margin: 10px 10px 10px 10px;
+    padding: 0;
+    transition: background-color .5s ease-in-out;
 }
 
-	.frmb li {
-		position: relative;
-		padding: 6px;
-		clear: both;
-		margin-left: 0;
-		margin-bottom: 3px;
-		background-color: #FFFFFF;
-		transition: background-color .25s ease-in-out,margin-top .4s;
-		height: auto;
-	}
+    .frmb li {
+        position: relative;
+        padding: 6px;
+        clear: both;
+        margin-left: 0;
+        margin-bottom: 3px;
+        background-color: #FFFFFF;
+        transition: background-color .25s ease-in-out,margin-top .4s;
+        height: auto;
+    }
 
-		.frmb li:last-child {
-			border-bottom-left-radius: 5px;
-			border-bottom-right-radius: 5px;
-		}
+        .frmb li:last-child {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
 
-		.frmb li:first-child {
-			border-top-left-radius: 5px;
-			border-top-right-radius: 5px;
-		}
+        .frmb li:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
 
-	.frmb > li:hover {
-		border-color: #66afe9;
-		outline: 0;
-		box-shadow: inset 0 1px 1px rgba(0,0,0,.1),0 0 8px rgba(102,175,233,.6);
-		height: auto;
-	}
+    .frmb > li:hover {
+        border-color: #66afe9;
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.1),0 0 8px rgba(102,175,233,.6);
+        height: auto;
+    }
 
-		.frmb > li:hover .field-actions {
-			opacity: 1;
-		}
+        .frmb > li:hover .field-actions {
+            opacity: 1;
+        }
 
-		.frmb > li:hover li :hover {
-			background: #fefefe
-		}
+        .frmb > li:hover li :hover {
+            background: #fefefe;
+        }
 
-	.frmb .field-actions {
-		opacity: 0;
-		position: absolute;
-		right: -1.0%;
-		top: 0;
-	}
+    .frmb .field-actions {
+        opacity: 0;
+        position: absolute;
+        right: -1.0%;
+        top: 0;
+    }
 
-		.frmb .field-actions .btn {
-			background-color: #fff;
-			border-color: #c5c5c5;
-			border-radius: 0;
-			border-width: 0 0 1px 1px;
-			color: #c5c5c5;
-			display: inline-block;
-			font-size: 16px;
-			height: 32px;
-			line-height: 32px;
-			padding: 0 6px;
-			margin-right: -6%;
-		}
+        .frmb .field-actions .btn {
+            background-color: #fff;
+            border-color: #c5c5c5;
+            border-radius: 0;
+            border-width: 0 0 1px 1px;
+            color: #c5c5c5;
+            display: inline-block;
+            font-size: 16px;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 6px;
+            margin-right: -6%;
+        }
 
-		.frmb .field-actions img {
-			margin-top: 8px;
-		}
+        .frmb .field-actions img {
+            margin-top: 8px;
+        }
 
-	.frmb .btn {
-		-moz-user-select: none;
-		background-image: none;
-		border: 1px solid transparent;
-		border-radius: 4px;
-		cursor: pointer;
-		display: inline-block;
-		font-size: 14px;
-		font-weight: 400;
-		line-height: 1.42857;
-		margin-bottom: 0;
-		padding: 6px 12px;
-		text-align: center;
-		touch-action: manipulation;
-		vertical-align: middle;
-		white-space: nowrap;
-	}
+    .frmb .btn {
+        -moz-user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857;
+        margin-bottom: 0;
+        padding: 6px 12px;
+        text-align: center;
+        touch-action: manipulation;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
 
-	.frmb .copy, .edit, .remove {
-		font-size: 14px;
-	}
+    .frmb .copy, .edit, .remove {
+        font-size: 14px;
+    }
 
-		.frmb .copy:hover {
-			background-color: #6FC665;
-			color: #FFF;
-		}
+        .frmb .copy:hover {
+            background-color: #6FC665;
+            color: #FFF;
+        }
 
-	.frmb .edit:hover {
-		background-color: #68AAC8;
-		color: #FFF;
-	}
+    .frmb .edit:hover {
+        background-color: #68AAC8;
+        color: #FFF;
+    }
 
-	.frmb .remove:hover {
-		background-color: #C7646F;
-		color: #FFF;
-	}
+    .frmb .remove:hover {
+        background-color: #C7646F;
+        color: #FFF;
+    }
 
-	.frmb .field-label {
-		color: #666;
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 27px;
-		margin-bottom: 5px;
-	}
+    .frmb .field-label {
+        color: #666;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27px;
+        margin-bottom: 5px;
+    }
 
-	.frmb .prev-holder {
-		display: block;
-		cursor: move;
-	}
+    .frmb .prev-holder {
+        display: block;
+        cursor: move;
+    }
 
-	.frmb .form-group {
-		clear: both;
-		content: ".";
-		display: block;
-		height: 0;
-	}
+    .frmb .form-group {
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+    }
 
-	.frmb .name {
-		width: 30%;
-	}
-
-	.frmb .fnamedv {
-		float: left;
-		width: 30%;
-	}
-
-	.frmb .lnamedv {
-		width: 30%;
-		margin-left: 34%;
-	}
-
-	.frmb .emaildv {
-		width: 50%;
-	}
-
-	.frmb .areadv {
-		float: left;
-		width: 15%;
-	}
-
-		.frmb .areadv span {
-			top: 42%;
-			float: left;
-			position: absolute;
-		}
-
-		.frmb .areadv input {
-			margin-left: 10%;
-		}
-
-	.frmb .teldv {
-		width: 30%;
-		margin-left: 20%;
-	}
-
-	.frmb .datedv {
-		width: 50%;
-	}
-
-	.frmb .timedv {
-		width: 50%;
-	}
-
-	.frmb button {
-		-moz-user-select: none;
-		background-image: none;
-		border-radius: 4px;
-		cursor: pointer;
-		display: inline-block;
-		font-size: 14px;
-		font-weight: 400;
-		line-height: 1.42857;
-		margin-bottom: 0;
-		padding: 6px 12px;
-		text-align: center;
-		touch-action: manipulation;
-		vertical-align: middle;
-		white-space: nowrap;
-	}
+    .frmb .name {
+        width: 100%;
+    }
 
 
 
-	.frmb .form-field .form-group {
-		clear: left;
-		float: none;
-		width: 100%;
-		height: auto;
-	}
+    .frmb .string {
+        float: left;
+        width: 80%;
+    }
+
+    .frmb .dvSelection {
+        height: 50px;
+        width: 33%;
+        float: left;
+        border-right: 1px dotted;
+    }
+
+    .frmb .dvMultiSelection {
+        height: 80px;
+        width: 33%;
+        float: left;
+        border-right: 1px dotted;
+    }
+
+    .frmb .dvDate {
+        height: 65px;
+        width: 33%;
+        float: left;
+        border-right: 1px dotted;
+    }
 
 
 
-	.frmb .prev-holder .form-group {
-		margin: 0;
-	}
+    .frmb .fnamedv {
+        float: left;
+        width: 30%;
+    }
 
-	.frmb .prev-holder input[type="date"] {
-		width: auto;
-	}
+    .frmb .lnamedv {
+        width: 30%;
+        margin-left: 34%;
+    }
 
-	.frmb .prev-holder input[type="time"] {
-		width: auto;
-	}
 
-	.frmb .form-control {
-		background-color: #fff;
-		background-image: none;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-		color: #555;
-		display: block;
-		font-size: 14px;
-		height: 22px;
-		line-height: 1.42857;
-		padding: 6px 12px;
-		transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-		width: 100%;
-	}
 
-	.selectht {
-		height: 35px !important;
-	}
+    .frmb .emaildv {
+        width: 50%;
+    }
+
+    .frmb .areadv {
+        float: left;
+        width: 15%;
+    }
+
+        .frmb .areadv span {
+            top: 42%;
+            float: left;
+            position: absolute;
+        }
+
+        .frmb .areadv input {
+            margin-left: 10%;
+        }
+
+    .frmb .teldv {
+        width: 30%;
+        margin-left: 20%;
+    }
+
+    .frmb .datedv {
+        width: 50%;
+    }
+
+    .frmb .timedv {
+        width: 50%;
+    }
+
+    .frmb button {
+        -moz-user-select: none;
+        background-image: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857;
+        margin-bottom: 0;
+        padding: 6px 12px;
+        text-align: center;
+        touch-action: manipulation;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+
+
+    .frmb .form-field .form-group {
+        clear: left;
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+
+
+
+    .frmb .prev-holder .form-group {
+        margin: 0;
+    }
+
+    .frmb .prev-holder input[type="date"] {
+        width: auto;
+    }
+
+    .frmb .prev-holder input[type="time"] {
+        width: auto;
+    }
+
+    .frmb .form-control {
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        color: #555;
+        display: block;
+        font-size: 14px;
+        height: 22px;
+        line-height: 1.42857;
+        padding: 6px 12px;
+        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        width: 100%;
+    }
+
+.selectht {
+    height: 35px !important;
+}
 
 
 
 .frmb .h1, h1 {
-	font-size: 36px;
-	color: inherit;
-	font-family: inherit;
-	font-weight: 500;
-	line-height: 1.1;
+    font-size: 36px;
+    color: inherit;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
 }
 
-	.frmb .h1 .frmb li {
-		padding-top: 2px;
-	}
+    .frmb .h1 .frmb li {
+        padding-top: 2px;
+    }
 /*---------------Right Panel Ends---------------*/
+
+.frmb .maindv {
+    width: 100%;
+    height: 65px;
+}
+
+.frmb .maindvMS {
+    width: 100%;
+    height: 80px;
+}
+
+.frmb .firstdv {
+    width: 33%;
+    height: 65px;
+    float: left;
+    border-right: 1px dotted;
+}
+
+.frmb .seconddv {
+    margin-left: 3px;
+    width: 33%;
+    height: 65px;
+    float: left;
+    border-right: 1px dotted;
+    text-align: center;
+}
+
+.frmb .thirddv {
+    margin-left: 3px;
+    width: 33%;
+    height: 65px;
+    float: left;
+    text-align: center;
+}
+
+
