@@ -1,0 +1,509 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Builder Suite</title>
+    <meta charset="utf-8" />
+    <link href="../styles/editor.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="../scripts/configuration/angular.js"></script>
+    <script src="../scripts/configuration/angular.min.js"></script>
+    <script src="../scripts/controllers/editor.js"></script>
+    <link href="../styles/form-builder.css" rel="stylesheet" />
+    <script src="../scripts/plugins/ngDraggable.js"></script>
+
+</head>
+<body ng-app="app">
+    <header class="topheader" id="topheader">
+        <div class="navibar-logo">
+            <a href="#"><img class="logo" src="../images/noimage.png"></a>
+        </div>
+        <div class="navibar menu">
+            <nav>
+                <ul class="nav">
+                    <li><a href="#"><span>Link 1</span></a></li>
+                    <li><a href="#"><span>Link 2</span></a></li>
+                    <li><a href="#"><span>Link 3</span></a></li>
+                    <li><a href="#"><span>Link 4</span></a></li>
+                    <li><a href="#"><span>Link 5</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="navibar account-container">
+            <nav>
+                <div class="account">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <!--<i class="icon-settings"></i>-->
+                                Karthik Kusalraj
+                            </a>
+                        </li>
+                        <li style="margin-left: 0px">
+                            <a href="#">
+                                <span style="margin-left: 8px; padding: 4px;">
+                                    <!--<i class="icon-logout"></i>-->
+                                    Logout
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="page" ng-controller="editorController">
+        <div class="flex-container">
+            <div class="flex-row">
+                <!--Left Panel-->
+                <div id="sidebar" class="sidebar" style="">
+                    <!--Controls-->
+                    <div class="sidebar-position">
+                        <div class="sidebar-settings scroll">
+                            <div id="selements" class="sel" style="">
+                                <div class="pad">
+                                    Drag these boxes to the form at the right to add fields
+                                    <div>
+                                        <fieldset>
+                                            <label>Basic Controls</label>
+                                            <div id="sideA" ng-drag="true" ng-if="myCtrl.ConstraintForm !== false" ng-repeat="myCtrl in myControls | orderBy : 'id'  track by myCtrl.id" uniqueIdentity="{{myCtrl.id}}">
+
+                                                <div did="pre_text" id="{{myCtrl.Code}}" data-text-type="{{myCtrl.Code}}" data-default-value="{{myCtrl.Code}}" class="el sortable-chosen" draggable="true" style="">
+                                                    <i class="material-icons md-18">{{myCtrl.Icon}}</i>&nbsp;<span>{{myCtrl.Name}}</span>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Right Panel-->
+                <div class="flex-col" style="height:93vh">
+                    <div class="flush">
+                        <div class="viewport"></div>
+                        <div class="form fcc">
+                            <h1 id="displayHeaderContainer">
+                                <span id="name" class="editable" data-trigger="s_name" data-prop="name" contenteditable="">Form 1</span>
+                            </h1>
+                            <!--Drag Panel-->
+                            <div class="formElementContainer">
+                                <div id="formelements_0" data-page="page1" class="ellist">
+                                    <div class="formline" id="line1" placeholder="Drag boxes here to add them to the form">
+                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false" id="fHn7iCsWzohiXwWFX" validation-type="PHONE" style="">
+                                            <div>
+                                                <div class="gc" et="text">
+                                                    <textarea class="ed" prop="inputLabel" placeholder="Phone"></textarea>
+                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
+                                                        <i class="fa fa-clone"></i>
+                                                    </button>
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                                        <i class="material-icons md-18">delete</i>
+                                                    </button>
+                                                </div>
+                                                <fieldset class="icon-left inline-edit-container">
+                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
+                                                </fieldset>
+                                                <div class="gc">
+                                                    <textarea class="ed help" prop="instructionText" placeholder="Phone Numbers"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false"
+                                             id="fT4Cg8QV38XIpF24T" validation-type="PHONE" style="">
+                                            <div>
+                                                <div class="gc" et="text">
+                                                    <textarea class="ed" prop="inputLabel" placeholder="Text Field"></textarea>
+                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
+                                                        <i class="fa fa-clone"></i>
+                                                    </button>
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                                        <i class="material-icons md-18">delete</i>
+                                                    </button>
+                                                </div>
+                                                <fieldset class="icon-left inline-edit-container">
+                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
+                                                    <i class="fa fa-phone"></i>
+                                                </fieldset>
+                                                <div class="gc">
+                                                    <textarea class="ed help" prop="instructionText" placeholder="Free Text"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div did="pre_text" data-text-type="number" data-default-value="Number" class="el" draggable="false"
+                                             id="fz4Dg2itIC7FFCKG1" validation-type="NUMBER" style="">
+                                            <div>
+                                                <div class="gc" et="text">
+                                                    <textarea class="ed" prop="inputLabel" placeholder="Number"></textarea>
+                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
+                                                        <i class="fa fa-clone"></i>
+                                                    </button>
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                                        <i class="material-icons md-18">delete</i>
+                                                    </button>
+                                                </div>
+                                                <fieldset class="icon-left">
+                                                    <input prop="placeholderText" type="number">
+                                                </fieldset>
+                                                <div class="gc">
+                                                    <textarea class="ed help" prop="instructionText" placeholder="Only Numbers"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false" id="fHn7iCsWzohiXwWFX" validation-type="PHONE" style="">
+                                            <div>
+                                                <div class="gc" et="text">
+                                                    <textarea class="ed" prop="inputLabel" placeholder="Phone"></textarea>
+                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
+                                                        <i class="fa fa-clone"></i>
+                                                    </button>
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                                        <i class="material-icons md-18">delete</i>
+                                                    </button>
+                                                </div>
+                                                <fieldset class="icon-left inline-edit-container">
+                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
+                                                </fieldset>
+                                                <div class="gc">
+                                                    <textarea class="ed help" prop="instructionText" placeholder="Phone Numbers"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="formline" id="line2" placeholder="Drag boxes here to add them to the form">
+                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false"
+                                             id="fT4Cg8QV38XIpF24T" validation-type="PHONE" style="">
+                                            <div>
+                                                <div class="gc" et="text">
+                                                    <textarea class="ed" prop="inputLabel" placeholder="Text Field"></textarea>
+                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
+                                                        <i class="fa fa-clone"></i>
+                                                    </button>
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                                        <i class="material-icons md-18">delete</i>
+                                                    </button>
+                                                </div>
+                                                <fieldset class="icon-left inline-edit-container">
+                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
+                                                    <i class="fa fa-phone"></i>
+                                                </fieldset>
+                                                <div class="gc">
+                                                    <textarea class="ed help" prop="instructionText" placeholder="Free Text"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div did="pre_text" data-text-type="number" data-default-value="Number" class="el" draggable="false"
+                                             id="fz4Dg2itIC7FFCKG1" validation-type="NUMBER" style="">
+                                            <div>
+                                                <div class="gc" et="text">
+                                                    <textarea class="ed" prop="inputLabel" placeholder="Number"></textarea>
+                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
+                                                        <i class="fa fa-clone"></i>
+                                                    </button>
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                                        <i class="material-icons md-18">delete</i>
+                                                    </button>
+                                                </div>
+                                                <fieldset class="icon-left">
+                                                    <input prop="placeholderText" type="number">
+                                                </fieldset>
+                                                <div class="gc">
+                                                    <textarea class="ed help" prop="instructionText" placeholder="Only Numbers"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="formline" id="line3" placeholder="Drag boxes here to add them to the form">
+                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false"
+                                             id="fT4Cg8QV38XIpF24T" validation-type="PHONE" style="">
+                                            <div>
+                                                <div class="gc" et="text">
+                                                    <textarea class="ed" prop="inputLabel" placeholder="Text Field"></textarea>
+                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
+                                                        <i class="fa fa-clone"></i>
+                                                    </button>
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                                        <i class="material-icons md-18">delete</i>
+                                                    </button>
+                                                </div>
+                                                <fieldset class="icon-left inline-edit-container">
+                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
+                                                    <i class="fa fa-phone"></i>
+                                                </fieldset>
+                                                <div class="gc">
+                                                    <textarea class="ed help" prop="instructionText" placeholder="Free Text"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="formline water" id="line4" style="display: grid !important" placeholder="Drag boxes here to add them to the form">
+                                        Drag boxes here to add them to the form
+                                    </div>
+                                    <div class="footer">
+                                        <div class="gr flush" style="margin:0">
+                                            <div class="gc g3 pad-double right">
+                                                <span class="button button-blue editable submitButtonText" type="button" style="float: right;" data-trigger="s_submitButtonText" data-prop="submitButtonText" contenteditable="">Submit</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <ul class="frmb" id="ulDrop">
+                                <li class="form-field" type="heading" ng-repeat="list in myList" ng-switch on="list.title">
+                                    <div class="maindv" ng-switch-when="String">
+                                        <div class="firstdv">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">String</label><div class="prev-holder">
+                                                <div class="string"><input class="form-control name" required type="text"></div>
+                                            </div>
+                                        </div>
+                                        <ul class="frmb" id="ulDrop">
+                                            <li class="form-field" type="heading" ng-repeat="subList in mySubQuestion" ng-switch on="subList.title">
+                                                <div class="firstdv">
+                                                    <div class="field-actions">
+                                                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                                    </div>
+                                                    <label class="field-label">String</label><div class="prev-holder">
+                                                        <div class="string"><input class="form-control name" required type="text"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="firstdv">
+                                                    <div class="field-actions">
+                                                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                                    </div>
+                                                    <label class="field-label">String</label><div class="prev-holder">
+                                                        <div class="string"><input class="form-control name" required type="text"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="Selection">
+                                        <div class="dvSelection">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Selection</label>
+                                            <div class="prev-holder">
+                                                <div class="fnamedv">
+                                                    <select name="sometext" size="1">
+                                                        <option>Selection 1</option>
+                                                        <option>Selection 2</option>
+                                                        <option>Selection 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="frmb" id="ulDrop">
+                                            <li class="form-field" type="heading" ng-repeat="subList in mySubQuestion" ng-switch on="subList.title">
+                                                <div class="firstdv">
+                                                    <div class="field-actions">
+                                                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                                    </div>
+                                                    <label class="field-label">String</label><div class="prev-holder">
+                                                        <div class="string"><input class="form-control name" required type="text"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="firstdv">
+                                                    <div class="field-actions">
+                                                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                                    </div>
+                                                    <label class="field-label">String</label><div class="prev-holder">
+                                                        <div class="string"><input class="form-control name" required type="text"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="maindvMS" ng-switch-when="Multi Selection">
+                                        <div class="dvMultiSelection">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Multi Selection</label><div class="prev-holder">
+                                                <div class="prev-holder">
+                                                    <div class="fnamedv">
+                                                        <select name="sometext" size="3" multiple="multiple">
+                                                            <option>Selection 1</option>
+                                                            <option>Selection 2</option>
+                                                            <option>Selection 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="frmb" id="ulDrop">
+                                            <li class="form-field" type="heading" ng-repeat="subList in mySubQuestion" ng-switch on="subList.title">
+                                                <div class="firstdv">
+                                                    <div class="field-actions">
+                                                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                                    </div>
+                                                    <label class="field-label">String</label><div class="prev-holder">
+                                                        <div class="string"><input class="form-control name" required type="text"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="firstdv">
+                                                    <div class="field-actions">
+                                                        <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                        <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                                    </div>
+                                                    <label class="field-label">String</label><div class="prev-holder">
+                                                        <div class="string"><input class="form-control name" required type="text"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="Date">
+                                        <div class="dvDate">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Date</label><div class="prev-holder"><div class="datedv"><input class="form-control" type="date"></div></div>
+                                        </div>
+                                        <div class="seconddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                        <div class="thirddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="DateTime">
+                                        <div class="dvDate">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Date Time</label><div class="prev-holder">
+                                                <div class="fnamedv"><input class="form-control name" required type="datetime"></div>
+                                            </div>
+                                        </div>
+                                        <div class="seconddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                        <div class="thirddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="Time">
+                                        <div class="dvDate">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Time</label><div class="prev-holder"><div class="datedv"><input class="form-control" type="time"></div></div>
+                                        </div>
+                                        <div class="seconddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                        <div class="thirddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="Integer">
+                                        <div class="dvDate">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Integer</label><div class="prev-holder">
+                                                <div class="fnamedv"><input class="form-control name" required type="number"></div>
+                                            </div>
+                                        </div>
+                                        <div class="seconddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                        <div class="thirddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="Decimal">
+                                        <div class="dvDate">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Decimal</label><div class="prev-holder">
+                                                <div class="fnamedv"><input class="form-control name" required type="text"></div>
+                                            </div>
+                                        </div>
+                                        <div class="seconddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                        <div class="thirddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="Section">
+                                        <div class="dvDate">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <label class="field-label">Section</label><div class="prev-holder">
+                                                <div class="datedv"><section></section></div>
+                                            </div>
+                                        </div>
+                                        <div class="seconddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                        <div class="thirddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                    </div>
+                                    <div class="maindv" ng-switch-when="Submit">
+                                        <div class="dvMultiSelection">
+                                            <div class="field-actions">
+                                                <a class="edit btn" title="Edit"><img alt="Edit" src="../icons/edit.png" /></a>
+                                                <a class="copy btn" title="Copy"><img alt="Copy" src="../icons/copy.png" /></a><a class="remove btn" title="Remove"><img alt="Remove" src="../icons/delete.png" /></a>
+                                            </div>
+                                            <div class="prev-holder"><button type="submit">Submit</button></div>
+                                        </div>
+                                        <div class="seconddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                        <div class="thirddv">
+                                            <br />
+                                            Drop Here...
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
