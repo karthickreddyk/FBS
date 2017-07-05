@@ -7,5 +7,6 @@
 /// <reference path="../controllers/editor.js" />
 /// <reference path="../controllers/editorwithsubarray.js" />
 /// <reference path="../controllers/index.js" />
+/// <reference path="../controllers/newdesign.js" />
 /// <reference path="../controllers/questionController.js" />
 /// <reference path="../plugins/ngDraggable.js" />
