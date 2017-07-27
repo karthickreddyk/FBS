@@ -7,6 +7,7 @@
 /// <reference path="../controllers/dropcontrol.js" />
 /// <reference path="../controllers/editor.js" />
 /// <reference path="../controllers/editorwithsubarray.js" />
+/// <reference path="../controllers/highlight.js" />
 /// <reference path="../controllers/index.js" />
 /// <reference path="../controllers/newdesign.js" />
 /// <reference path="../controllers/questionController.js" />
