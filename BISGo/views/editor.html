@@ -5,17 +5,22 @@
     <meta charset="utf-8" />
     <link href="../styles/editor.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="../styles/form-builder.css" rel="stylesheet" />
     <script src="../scripts/configuration/angular.js"></script>
     <script src="../scripts/configuration/angular.min.js"></script>
-    <script src="../scripts/controllers/editor.js"></script>
-    <link href="../styles/form-builder.css" rel="stylesheet" />
+    <script src="../scripts/controllers/editor.js"></script>    
     <script src="../scripts/plugins/ngDraggable.js"></script>
-
+    <!--<link href="../styles/material.indigo-pink.min.css" rel="stylesheet" />-->
+    <script src="../scripts/plugins/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="../styles/material.cyan-light_blue.min.css" rel="stylesheet" />
 </head>
 <body ng-app="app">
     <header class="topheader" id="topheader">
         <div class="navibar-logo">
-            <a href="#"><img class="logo" src="../images/noimage.png"></a>
+            <a href="#">
+                <img class="logo" src="../images/noimage.png">
+            </a>
         </div>
         <div class="navibar menu">
             <nav>
@@ -34,14 +39,13 @@
                     <ul class="nav">
                         <li>
                             <a href="#">
-                                <!--<i class="icon-settings"></i>-->
-                                Karthik Kusalraj
+                            
+
                             </a>
                         </li>
                         <li style="margin-left: 0px">
                             <a href="#">
                                 <span style="margin-left: 8px; padding: 4px;">
-                                    <!--<i class="icon-logout"></i>-->
                                     Logout
                                 </span>
                             </a>
@@ -51,7 +55,7 @@
             </nav>
         </div>
     </header>
-    <div class="page" ng-controller="editorController">
+    <div class="page" ng-controller="indexController" id="divForm">
         <div class="flex-container">
             <div class="flex-row">
                 <!--Left Panel-->
@@ -65,12 +69,15 @@
                                     <div>
                                         <fieldset>
                                             <label>Basic Controls</label>
-                                            <div id="sideA" ng-drag="true" ng-if="myCtrl.ConstraintForm !== false" ng-repeat="myCtrl in myControls | orderBy : 'id'  track by myCtrl.id" uniqueIdentity="{{myCtrl.id}}">
 
-                                                <div did="pre_text" id="{{myCtrl.Code}}" data-text-type="{{myCtrl.Code}}" data-default-value="{{myCtrl.Code}}" class="el sortable-chosen" draggable="true" style="">
-                                                    <i class="material-icons md-18">{{myCtrl.Icon}}</i>&nbsp;<span>{{myCtrl.Name}}</span>
+                                            <div id="draggable_ctrl" ng-drag="true" ng-if="myCtrl.ConstraintForm !== false" ng-repeat="myCtrl in myControls | orderBy : 'id'  track by myCtrl.id" uniqueidentity="{{myCtrl.id}}" ng-dblclick="AddControl(myCtrl.Code,myCtrl.type)">
+
+                                                <div did="pre_text" id="{{myCtrl.Code}}" data-text-type="{{myCtrl.Code}}" data-default-value="{{myCtrl.Code}}" class="el sortable-chosen" ng-drag="true" ng-drag-data="myCtrl" style="height: 38px; width: 200px;">
+                                                    <i class="material-icons md-18 md-dark orange600">{{myCtrl.Icon}}</i>&nbsp;<span>{{myCtrl.Name}}</span>
+                                                    
                                                 </div>
                                             </div>
+
                                         </fieldset>
                                     </div>
                                 </div>
@@ -79,7 +86,7 @@
                     </div>
                 </div>
                 <!--Right Panel-->
-                <div class="flex-col" style="height:93vh">
+                <div class="flex-col" style="height: 93vh">
                     <div class="flush">
                         <div class="viewport"></div>
                         <div class="form fcc">
@@ -88,169 +95,42 @@
                             </h1>
                             <!--Drag Panel-->
                             <div class="formElementContainer">
-                                <div id="formelements_0" data-page="page1" class="ellist">
-                                    <div class="formline" id="line1" placeholder="Drag boxes here to add them to the form">
-                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false" id="fHn7iCsWzohiXwWFX" validation-type="PHONE" style="">
-                                            <div>
-                                                <div class="gc" et="text">
-                                                    <textarea class="ed" prop="inputLabel" placeholder="Phone"></textarea>
-                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
-                                                        <i class="fa fa-clone"></i>
-                                                    </button>
-                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
-                                                        <i class="material-icons md-18">delete</i>
-                                                    </button>
-                                                </div>
-                                                <fieldset class="icon-left inline-edit-container">
-                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
-                                                </fieldset>
-                                                <div class="gc">
-                                                    <textarea class="ed help" prop="instructionText" placeholder="Phone Numbers"></textarea>
-                                                </div>
+                                <div id="formelements_0" data-page="page1" class="ellist" ng-drop="true" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"  ng-drop-success="onDropComplete($data,$event,this)">
+                                    <div class="formline ng-scope" id="line1" placeholder=""></div>
+                                    <div class="formline" id="line1" placeholder="Drag boxes here to add them to the form" ng-repeat="list in myList">
+                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false" style="padding-top: 0px;" id="Main-{{list.id}}">
+                                            <button class="right inline-edit delete" tabindex="-1" title="Delete" ng-click="DeleteCtrl(list.id)">
+                                                <i class="material-icons md-18">delete</i>
+                                            </button>
+                                            <input class="form-control name" required type="{{list.title}}">
+                                            <div class="droptxtline">
+                                                <h5 class="droptxth5"ng-show="hoverEdit"  id="M-{{list.id}}">Drop here to add the sub controls</h5>
                                             </div>
-                                        </div>
-                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false"
-                                             id="fT4Cg8QV38XIpF24T" validation-type="PHONE" style="">
-                                            <div>
-                                                <div class="gc" et="text">
-                                                    <textarea class="ed" prop="inputLabel" placeholder="Text Field"></textarea>
-                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
-                                                        <i class="fa fa-clone"></i>
-                                                    </button>
-                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
+                                            <div ng-repeat="Sublist in list.Sub" ng-switch on="Sublist.title">
+                                                <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false" validation-type="PHONE" style="width: 100%; left: 28px; padding-top: 0px;" id="Sub-{{list.id}}-{{Sublist.id}}">
+                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete" ng-click="DeleteCtrl(list.id,Sublist.id)">
                                                         <i class="material-icons md-18">delete</i>
                                                     </button>
-                                                </div>
-                                                <fieldset class="icon-left inline-edit-container">
-                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
-                                                    <i class="fa fa-phone"></i>
-                                                </fieldset>
-                                                <div class="gc">
-                                                    <textarea class="ed help" prop="instructionText" placeholder="Free Text"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div did="pre_text" data-text-type="number" data-default-value="Number" class="el" draggable="false"
-                                             id="fz4Dg2itIC7FFCKG1" validation-type="NUMBER" style="">
-                                            <div>
-                                                <div class="gc" et="text">
-                                                    <textarea class="ed" prop="inputLabel" placeholder="Number"></textarea>
-                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
-                                                        <i class="fa fa-clone"></i>
-                                                    </button>
-                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
-                                                        <i class="material-icons md-18">delete</i>
-                                                    </button>
-                                                </div>
-                                                <fieldset class="icon-left">
-                                                    <input prop="placeholderText" type="number">
-                                                </fieldset>
-                                                <div class="gc">
-                                                    <textarea class="ed help" prop="instructionText" placeholder="Only Numbers"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false" id="fHn7iCsWzohiXwWFX" validation-type="PHONE" style="">
-                                            <div>
-                                                <div class="gc" et="text">
-                                                    <textarea class="ed" prop="inputLabel" placeholder="Phone"></textarea>
-                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
-                                                        <i class="fa fa-clone"></i>
-                                                    </button>
-                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
-                                                        <i class="material-icons md-18">delete</i>
-                                                    </button>
-                                                </div>
-                                                <fieldset class="icon-left inline-edit-container">
-                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
-                                                </fieldset>
-                                                <div class="gc">
-                                                    <textarea class="ed help" prop="instructionText" placeholder="Phone Numbers"></textarea>
+                                                    <input class="form-control name" required type="{{Sublist.title}}">
+                                                    <div class="droptxtline">
+                                                        <h5 class="droptxth5" ng-show="hoverEdit" id="S-{{list.id}}-{{Sublist.id}}">Drop here to add 2nd level sub controls</h5>
+                                                    </div>
+                                                    <div ng-repeat="SecondSub in Sublist.Sub" ng-switch on="SecondSub.title">
+                                                        <div did="pre_text" data-text-type="phone" class="el" draggable="false" style="width: 91%; left: 76px; padding-top: 0px;" id="Sub-{{list.id}}-{{Sublist.id}}-{{SecondSub.id}}">
+                                                            <button class="right inline-edit delete" tabindex="-1" title="Delete" ng-click="DeleteCtrl(list.id,Sublist.id,SecondSub.id)">
+                                                                <i class="material-icons md-18">delete</i>
+                                                            </button>
+                                                            <input class="form-control name" required type="{{SecondSub.title}}">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="formline" id="line2" placeholder="Drag boxes here to add them to the form">
-                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false"
-                                             id="fT4Cg8QV38XIpF24T" validation-type="PHONE" style="">
-                                            <div>
-                                                <div class="gc" et="text">
-                                                    <textarea class="ed" prop="inputLabel" placeholder="Text Field"></textarea>
-                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
-                                                        <i class="fa fa-clone"></i>
-                                                    </button>
-                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
-                                                        <i class="material-icons md-18">delete</i>
-                                                    </button>
-                                                </div>
-                                                <fieldset class="icon-left inline-edit-container">
-                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
-                                                    <i class="fa fa-phone"></i>
-                                                </fieldset>
-                                                <div class="gc">
-                                                    <textarea class="ed help" prop="instructionText" placeholder="Free Text"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div did="pre_text" data-text-type="number" data-default-value="Number" class="el" draggable="false"
-                                             id="fz4Dg2itIC7FFCKG1" validation-type="NUMBER" style="">
-                                            <div>
-                                                <div class="gc" et="text">
-                                                    <textarea class="ed" prop="inputLabel" placeholder="Number"></textarea>
-                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
-                                                        <i class="fa fa-clone"></i>
-                                                    </button>
-                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
-                                                        <i class="material-icons md-18">delete</i>
-                                                    </button>
-                                                </div>
-                                                <fieldset class="icon-left">
-                                                    <input prop="placeholderText" type="number">
-                                                </fieldset>
-                                                <div class="gc">
-                                                    <textarea class="ed help" prop="instructionText" placeholder="Only Numbers"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="formline" id="line3" placeholder="Drag boxes here to add them to the form">
-                                        <div did="pre_text" data-text-type="phone" data-default-value="Phone" class="el" draggable="false"
-                                             id="fT4Cg8QV38XIpF24T" validation-type="PHONE" style="">
-                                            <div>
-                                                <div class="gc" et="text">
-                                                    <textarea class="ed" prop="inputLabel" placeholder="Text Field"></textarea>
-                                                    <button class="right inline-edit duplicate" tabindex="-1" title="Duplicate">
-                                                        <i class="fa fa-clone"></i>
-                                                    </button>
-                                                    <button class="right inline-edit delete" tabindex="-1" title="Delete">
-                                                        <i class="material-icons md-18">delete</i>
-                                                    </button>
-                                                </div>
-                                                <fieldset class="icon-left inline-edit-container">
-                                                    <input prop="placeholderText" class="inline-edit input-text" type="text">
-                                                    <i class="fa fa-phone"></i>
-                                                </fieldset>
-                                                <div class="gc">
-                                                    <textarea class="ed help" prop="instructionText" placeholder="Free Text"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="formline water" id="line4" style="display: grid !important" placeholder="Drag boxes here to add them to the form">
-                                        Drag boxes here to add them to the form
-                                    </div>
-                                    <div class="footer">
-                                        <div class="gr flush" style="margin:0">
-                                            <div class="gc g3 pad-double right">
-                                                <span class="button button-blue editable submitButtonText" type="button" style="float: right;" data-trigger="s_submitButtonText" data-prop="submitButtonText" contenteditable="">Submit</span>
-                                            </div>
-                                        </div>
+                                    <div class="droptxtlinedwn" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                                        <h5 class="droptxth5"ng-show="hoverEdit" >Drop here to add main control</h5>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -258,5 +138,14 @@
             </div>
         </div>
     </div>
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">Title</div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>

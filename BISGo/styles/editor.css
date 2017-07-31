@@ -807,7 +807,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .page {
     background: #f0f0f2;
-    height: calc(100% - 60px);
+    height: calc(100% - 20%);
     overflow: hidden;
 }
 
@@ -1761,7 +1761,7 @@ span.title {
 .sidebar {
     background: white;
     border-right: 2px solid #d6d7d6;
-    width: 335px;
+    width: 235px;
     padding: 0;
     position: relative;
 }
@@ -1866,7 +1866,7 @@ span.title {
 }
 
 .sidebar .el {
-    border: 1px dashed #a7b6ae;
+    border: 1px dashed #00BCD4;
 }
 
 .sidebar .el:hover {
@@ -2281,7 +2281,7 @@ i.icon-info:hover .tooltip-wrapper {
 }
 
 fieldset {
-    display: block;
+    display: grid;
     position: relative;
 }
 
@@ -3204,3 +3204,71 @@ input.product-input {
     text-align: center;
     width: 100%;
 }
+
+.formElementContainer
+{
+    width: 68%;
+}
+
+.esl{
+    float: unset;
+    display: inline;
+}
+
+.ctrlpad{
+    padding-top: 0px;
+}
+
+.droptxtline{
+    border-bottom: 1px dashed #d6d7d6;
+    border-top: 1px dashed #d6d7d6;
+    margin-top: 4px;
+    text-align: center;    
+    background-color: #00BCD4;
+}
+
+.droptxtlinedwn{
+    border-bottom: 1px dashed #d6d7d6;
+    margin-top: 4px;
+    text-align: center;
+
+}
+
+.droptxth5{
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    font-style: italic;
+    font-size: small;
+    font-weight: normal;
+    display: none;
+    color: white;
+    
+}
+
+.droptxth5{
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    font-style: italic;
+    font-size: small;
+    font-weight: normal;
+    display : block;
+    /*display: none;
+    visibility:hidden;*/
+}
+
+.material-icons.orange600
+{
+    color: #00BCD4;
+}
+
+/*.formElementContainer:hover .droptxth5{
+display : block;
+visibility:visible;
+}
+.formElementContainer:hover .droptxth5{
+display : block;
+visibility:visible;
+}
+.hover{
+display : block;
+}*/
